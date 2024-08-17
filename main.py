@@ -25,4 +25,4 @@ async def on_message(message):
 # Bot run and token
 
 if __name__ == '__main__':
-    client.run(__senha__.BOT_TOKEN)
+    client.run(__token__.BOT_TOKEN)
