@@ -1,26 +1,22 @@
 import discord
-import __token__
+from discord.ext import commands
 
-# Client
-# Necessario para o Bot ler as mensagens
 intents = discord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents)
 
-@client.event
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
 async def on_ready():
-    print("Pronto")
+    print(f'Estamos logados como {bot.user}')
 
-@client.event
-async def on_disconnect():
-    print("Desconectado")
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Olá! eu sou um bot {bot.user}!')
 
-# Message events
-@client.event
-async def on_message(message):
-    content = message.content
-    channel = message.channel
-    author = message.author
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
 
 # Bot run and token
 
